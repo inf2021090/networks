@@ -1,24 +1,32 @@
 #!/bin/bash
 
+# Define the input file path
+input_file="mm1.in"
+
 # Compile the C++ code
-gcc-lm mm1.c -o mm1
+gcc -lm  mm1.c -o mm1
 
 # Create a file to store the results
 echo "# arrival_rate num_delays_required execution_time" > results.txt
 
 # Define initial values
-arrival_rate=1.0
-service_rate=0.5
+arrival_rate=0.1
+service_rate=1.0
 num_delays_required=1000
 
 # Run the program 20 times and store the execution times
 for i in {1..20}; do
   echo "Running iteration $i..."
+
+  # Update the input file with new values
+  echo "$arrival_rate $service_rate $num_delays_required" > $input_file
+
+  # Execute the program
   execution_time=$(./mm1 | awk '/^Time simulation ended/ { print $NF }')
   echo "$arrival_rate $num_delays_required $execution_time" >> results.txt
 
   # Increment the values
-  arrival_rate=$(awk -v rate="$arrival_rate" 'BEGIN { printf "%.1f", rate + 1.0 }')
+  arrival_rate=$(awk -v rate="$arrival_rate" 'BEGIN { printf "%.1f", rate + 0.1 }')
   num_delays_required=$((num_delays_required + 500))
 done
 
