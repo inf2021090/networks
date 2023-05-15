@@ -1,2 +1,1 @@
-λ,μ,1/λ,1/μ,ρ,Νs,Tq_th,Tq_ex,Nq_th,T_th,T_ex,Nq_ex,N_th,N_ex
-0.010,2,
+λ μ 1/λ 1/μ Tq_ex Nq_ex
