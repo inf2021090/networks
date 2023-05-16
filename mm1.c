@@ -13,7 +13,7 @@ int       next_event_type, num_custs_delayed, num_delays_required,
 float    area_num_in_q, area_server_status, mean_interarrival,
             mean_service, time, time_arrival[Q_LIMIT + 1],
             time_last_event, time_next_event[3], total_of_delays;
-FILE   *infile, *outfile;
+FILE   *infile, *outfile, *file1;
 
 void   initialize(void);
 void   timing(void);
