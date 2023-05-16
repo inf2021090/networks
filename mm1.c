@@ -30,7 +30,7 @@ int main(void)
 	/*  Open input and output files.  */
 	infile    = fopen("mm1.in","r");
 	outfile  = fopen("mm1.out","w");
-	file =fopen("results1.txt","w")
+	file1 =fopen("results1.txt","a")
 
 	/*  specify the number of events for the timing function.  */
 	num_events = 2;
@@ -241,6 +241,9 @@ void  report(void)
 	fprintf(outfile, "Server utilization%15.3f\n\n",
 		area_server_status / time);
 	fprintf(outfile, "Time simulation ended%12.3f", time);
+	
+	fprintf(file1, "%11.3f minutes\n",
+		total_of_delays / num_custs_delayed);
 	
 
 }
