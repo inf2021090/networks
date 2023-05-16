@@ -73,6 +73,7 @@ int main(void)
 	report( );
 	fclose(infile);
 	fclose(outfile);
+	fclose(file1);
 	return 0;
 }
 
