@@ -13,7 +13,7 @@ int       next_event_type, num_custs_delayed, num_delays_required,
 float    area_num_in_q, area_server_status, mean_interarrival,
             mean_service, time, time_arrival[Q_LIMIT + 1],
             time_last_event, time_next_event[3], total_of_delays;
-FILE   *infile, *outfile, *file1;
+FILE   *infile, *outfile, *file1, *file2, *file3, *file4;
 
 void   initialize(void);
 void   timing(void);
@@ -30,7 +30,10 @@ int main(void)
 	/*  Open input and output files.  */
 	infile    = fopen("mm1.in","r");
 	outfile  = fopen("mm1.out","w");
-	file1 =fopen("results1.txt","a");
+	file1 =fopen("Tq.txt","a");
+	file2 =fopen("Nq.txt","a");
+	file3 =fopen("Ns.txt","a");
+	file4 =fopen("Ts.txt","a");
 
 	/*  specify the number of events for the timing function.  */
 	num_events = 2;
@@ -74,6 +77,9 @@ int main(void)
 	fclose(infile);
 	fclose(outfile);
 	fclose(file1);
+	fclose(file2);
+	fclose(file3);
+	fclose(file4);
 	return 0;
 }
 
@@ -243,8 +249,15 @@ void  report(void)
 		area_server_status / time);
 	fprintf(outfile, "Time simulation ended%12.3f", time);
 	
-	fprintf(file1, "%11.3f minutes\n",
-		total_of_delays / num_custs_delayed);
+	/*  write the results to use in csv necause im too lazy.  */
+	fprintf(file1, "%11.3f\n",
+		total_of_delays / num_custs_delayed); //Τq
+	fprintf(file2, "%10.3f\n",
+		area_num_in_q / time); //Nq
+	fprintf(file3, "%15.3f\n",
+		area_server_status / time);//Ns
+	fprintf(file4, "%12.3f\n", time);//Ts
+	
 	
 
 }
