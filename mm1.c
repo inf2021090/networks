@@ -231,6 +231,63 @@ void  depart(void)
 /*  Report generator function.  */
 void  report(void)
 {
+	    // Open file 1
+    FILE *file1 = fopen("results1.txt", "a");
+    if (file1 == NULL) {
+        printf("Error opening file 1!");
+        return 1;
+    }
+
+    fprintf(file1, "%11.3f\n",
+		total_of_delays / num_custs_delayed);
+
+    // Close file 1
+    fclose(file1);
+
+
+    // Open file 2
+    FILE *file2 = fopen("results2.txt", "a");
+    if (file2 == NULL) {
+        printf("Error opening file 2!");
+        return 1;
+    }
+
+    // Generate result 2
+    fprintf(file2, "%d\n", result2);
+
+    // Close file 2
+    fclose(file2);
+
+
+    // Open file 3
+    FILE *file3 = fopen("results3.txt", "a");
+    if (file3 == NULL) {
+        printf("Error opening file 3!");
+        return 1;
+    }
+
+    // Generate result 3
+    fprintf(file3, "%d\n", result3);
+
+    // Close file 3
+    fclose(file3);
+
+
+    // Open file 4
+    FILE *file4 = fopen("results4.txt", "a");
+    if (file4 == NULL) {
+        printf("Error opening file 4!");
+        return 1;
+    }
+
+    // Generate result 4
+    int result4 = 168;
+
+    // Write result 4 to file 4
+    fprintf(file4, "%d\n", result4);
+
+    // Close file 4
+    fclose(file4);
 	/*  Compute and write estimates of desired measures of performance.  */
 
 	fprintf(outfile, "\n\nAverage delay in queue%11.3f minutes\n\n",
@@ -240,6 +297,8 @@ void  report(void)
 	fprintf(outfile, "Server utilization%15.3f\n\n",
 		area_server_status / time);
 	fprintf(outfile, "Time simulation ended%12.3f", time);
+	
+
 }
 
 /*  Update area accumulators for time-average statistics.  */
