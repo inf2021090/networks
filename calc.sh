@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the path to the input file
-input_file="mm1.in"
+input_file="./mm1.in"
 
 # Initialize the starting value
 x=0.1
@@ -22,10 +22,11 @@ do
     sed -i "1s/$first_value/$new_value/" "$input_file"
 
     # Run your program and append the output to the results file
-    ./your_program >> results
-
+    ./mm1 
+    cat mm1.out >> results.txt
+    echo iteration
     # Append the separator line
-    echo "#####" >> results
+    
 
     # Increment the value of x by 0.1
     x=$(bc <<< "$x + 0.1")
