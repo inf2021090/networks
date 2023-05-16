@@ -30,6 +30,7 @@ int main(void)
 	/*  Open input and output files.  */
 	infile    = fopen("mm1.in","r");
 	outfile  = fopen("mm1.out","w");
+	file =fopen("results1.txt","w")
 
 	/*  specify the number of events for the timing function.  */
 	num_events = 2;
