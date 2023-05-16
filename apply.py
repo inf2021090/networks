@@ -19,27 +19,28 @@ with open(csv_file, 'r') as file:
 with open(nq_file, 'r') as file:
     nq_lines = file.readlines()
 
-for i, row in enumerate(csv_data):
-    if i < len(nq_lines):
-        row[column_nq] = nq_lines[i].strip()
+for i, line in enumerate(nq_lines):
+    if i < len(csv_data):
+        csv_data[i][column_nq] = line.strip()
 
 # Read Tq.txt and update column 9
 with open(tq_file, 'r') as file:
     tq_lines = file.readlines()
 
-for i, row in enumerate(csv_data):
-    if i < len(tq_lines):
-        row[column_tq] = tq_lines[i].strip()
+for i, line in enumerate(tq_lines):
+    if i < len(csv_data):
+        csv_data[i][column_tq] = line.strip()
 
 # Read Ns.txt and update column 6
 with open(ns_file, 'r') as file:
     ns_lines = file.readlines()
 
-for i, row in enumerate(csv_data):
-    if i < len(ns_lines):
-        row[column_ns] = ns_lines[i].strip()
+for i, line in enumerate(ns_lines):
+    if i < len(csv_data):
+        csv_data[i][column_ns] = line.strip()
 
 # Write modified data back to CSV file
 with open(csv_file, 'w', newline='') as file:
     csv_writer = csv.writer(file)
     csv_writer.writerows(csv_data)
+
